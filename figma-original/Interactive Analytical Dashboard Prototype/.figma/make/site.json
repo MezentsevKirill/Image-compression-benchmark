@@ -1,0 +1,10 @@
+{
+  "description": "Analyze and compare image encoding algorithms with an interactive dashboard featuring visual comparisons, metrics, and real-time data updates for informed decision-making.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

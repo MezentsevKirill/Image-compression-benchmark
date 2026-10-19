@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compression Benchmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="workspace">
+    <aside class="controls">
+        <div class="control-sections">
+            <section>
+                <div class="section-title">
+                    <span>01</span>
+                    <h2>Data Source</h2>
+                </div>
+                <div class="carousel">
+                    <img alt="" class="small-icon" src="./assets/ae09d.svg">
+                    <button class="thumbnail selected" type="button">
+                        <img alt="lighthouse.png" src="./assets/fb907.png">
+                    </button>
+                    <button class="thumbnail" type="button">
+                        <img alt="forest-floor.png" src="./assets/7795c.png">
+                    </button>
+                    <button class="thumbnail" type="button">
+                        <img alt="architecture.png" src="./assets/38200.png">
+                    </button>
+                    <img alt="" class="small-icon" src="./assets/2da2b.svg">
+                </div>
+                <div class="file-meta">
+                    <strong>lighthouse.png</strong>
+                    <span>PNG <br>
+                <b>512x512 px</b>
+              </span>
+                </div>
+                <button class="upload-button" type="button">
+                    <img alt="" src="./assets/afbb7.svg"> Upload custom image </button>
+                <label class="field-label">Color Mode</label>
+                <div class="toggle-row">
+                    <span>Grayscale</span>
+                    <button aria-checked="true" aria-label="Toggle color mode" class="switch on" role="switch" type="button">
+                        <span></span>
+                    </button>
+                    <span class="active-label">BGR Channels</span>
+                </div>
+            </section>
+            <section>
+                <div class="section-title">
+                    <span>02</span>
+                    <h2>Noise Parameters</h2>
+                </div>
+                <label class="field-label" for="noise-trigger">Noise Type</label>
+                <div class="dropdown" id="noise-dropdown">
+                    <button class="dropdown-trigger" type="button" id="noise-trigger">
+                        <span class="selected-noise-label">None</span>
+                        <img alt="" src="./assets/421fb.svg">
+                    </button>
+                </div>
+                <p class="hint">Available: None · AWGN · Poisson</p>
+                <div class="parameter">
+                    <label for="noise-variance">Noise Variance</label>
+                    <div class="range-row">
+                        <input aria-label="Noise Variance" class="range-input" id="noise-variance" max="0.1" min="0.0001" step="0.0001" style="--range-progress: 10%;" type="range" value="0.01">
+                        <input aria-label="Noise Variance value" class="number-input" max="0.1" min="0.0001" step="0.0001" type="number" value="0.0100">
+                    </div>
+                    <div class="range-limits">
+                        <span>0.0001</span>
+                        <span>0.1000</span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="section-title">
+                    <span>03</span>
+                    <h2>Encoders Configuration</h2>
+                </div>
+                <label class="field-label">Select Algorithm</label>
+                <div class="dropdown" id="codec-dropdown">
+                    <button class="dropdown-trigger" type="button" id="codec-trigger">
+                <span class="selected-algorithm-label">
+                  <i></i>AGU </span>
+                        <img alt="" src="./assets/421fb.svg">
+                    </button>
+                </div>
+                <p class="hint">Available: AGU · BPG · HEIF · AVIF · JPEG</p>
+                <div class="parameter">
+                    <label for="compression">Compression Step (QS)</label>
+                    <div class="range-row">
+                        <input aria-label="Compression Step (QS)" class="range-input" id="compression" max="100" min="1" step="1" style="--range-progress: 24.24%;" type="range" value="25">
+                        <input aria-label="Compression Step (QS) value" class="number-input" max="100" min="1" step="1" type="number" value="25">
+                    </div>
+                    <div class="range-limits">
+                        <span>1</span>
+                        <span>100</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="run-area">
+            <button class="run-button" type="button">
+                <img alt="" src="./assets/b2e50.svg">Run Benchmark </button>
+            <p>Preview configuration · controls are illustrative</p>
+        </div>
+    </aside>
+    <div class="analysis">
+        <section class="panel comparison-panel">
+            <header class="panel-header">
+                <h1>Visual Comparison</h1>
+                <div class="algorithm-badge">AGU · QS 25 <img alt="" src="./assets/57d32.svg">
+                </div>
+            </header>
+            <div class="comparison-content">
+                <div aria-label="Before and after image comparison" class="comparison">
+                    <img alt="Decoded lighthouse" class="comparison-image decoded" src="./assets/fb907.png">
+                    <div class="decoded-treatment"></div>
+                    <div class="before-layer">
+                        <img alt="Noised original lighthouse" class="comparison-image original" src="./assets/fb907.png">
+                        <div class="noise-treatment"></div>
+                    </div>
+                    <span class="image-tag before-tag">BEFORE · NOISED ORIGINAL</span>
+                    <span class="image-tag after-tag">AFTER · DECODED AGU</span>
+                    <div class="divider" style="left:50%;">
+                        <button aria-label="Drag comparison divider" class="divider-handle" type="button">
+                            <img alt="" src="./assets/fc133.svg">
+                        </button>
+                    </div>
+                    <span class="image-note">ILLUSTRATIVE NOISE &amp; COMPRESSION ARTIFACTS</span>
+                </div>
+                <aside class="results" aria-label="Compression results">
+                    <div class="results-heading">
+                        <span>Current Results</span>
+                        <b>QS 25</b>
+                    </div>
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <span>File Size</span>
+                            <strong>124.6 KB</strong>
+                        </div>
+                        <div class="result-card">
+                            <span>Compression Ratio</span>
+                            <strong>6.17×</strong>
+                        </div>
+                        <div class="result-card">
+                            <span>Encoding Time</span>
+                            <strong>64.3 ms</strong>
+                        </div>
+                        <div class="result-card">
+                            <span>Peak RAM</span>
+                            <strong>82.4 MB</strong>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="comparison-meta">
+                <span>lighthouse.png · 512×512 px · RGB · AWGN σ² = 0.0100 · AGU</span>
+                <span>
+              <img alt="" src="./assets/4d921.svg">Comparison position 50% </span>
+            </div>
+        </section>
+        <section class="panel metrics-panel">
+            <header class="panel-header metrics-heading">
+                <h1>Performance Metrics</h1>
+                <span>PREVIEW / SAMPLE DATA ONLY</span>
+            </header>
+            <div class="chart-wrap">
+                <svg aria-label="Encoding Time chart for AGU" class="chart" viewBox="0 0 940 225">
+                    <g class="chart-grid">
+                        <line x1="48" x2="900" y1="26" y2="26" />
+                        <line x1="48" x2="900" y1="63.5" y2="63.5" />
+                        <line x1="48" x2="900" y1="101" y2="101" />
+                        <line x1="48" x2="900" y1="138.5" y2="138.5" />
+                        <line x1="48" x2="900" y1="176" y2="176" />
+                        <line x1="48" x2="48" y1="26" y2="176" />
+                        <line x1="218.4" x2="218.4" y1="26" y2="176" />
+                        <line x1="388.8" x2="388.8" y1="26" y2="176" />
+                        <line x1="559.2" x2="559.2" y1="26" y2="176" />
+                        <line x1="729.6" x2="729.6" y1="26" y2="176" />
+                        <line x1="900" x2="900" y1="26" y2="176" />
+                    </g>
+                    <g class="chart-labels">
+                        <text text-anchor="end" x="38" y="30">200</text>
+                        <text text-anchor="end" x="38" y="67.5">150</text>
+                        <text text-anchor="end" x="38" y="105">100</text>
+                        <text text-anchor="end" x="38" y="142.5">50</text>
+                        <text text-anchor="end" x="38" y="180">0</text>
+                        <text text-anchor="middle" x="48" y="196">1</text>
+                        <text text-anchor="middle" x="218.4" y="196">20</text>
+                        <text text-anchor="middle" x="388.8" y="196">40</text>
+                        <text text-anchor="middle" x="559.2" y="196">60</text>
+                        <text text-anchor="middle" x="729.6" y="196">80</text>
+                        <text text-anchor="middle" x="900" y="196">100</text>
+                    </g>
+                    <text class="axis-title y-axis" text-anchor="middle" transform="rotate(-90 12 102)" x="12" y="102">Encoding Time (ms)</text>
+                    <text class="axis-title" text-anchor="middle" x="474" y="218">Compression Parameter</text>
+                    <polyline class="metric-line line-draw" points="48,155 125.45,144.5 211.1,146.75 296.73,128 382.37,121.25 468,107.75 553.64,98 639.27,84.5 724.91,74.75 810.55,59 900,44" />
+                    <g class="selected-point">
+                        <line x1="254.4" x2="254.4" y1="26" y2="176" />
+                        <circle cx="254.4" cy="129.55" r="10" />
+                        <circle class="selected-point-core" cx="254.4" cy="129.55" r="4" />
+                        <g transform="translate(210.4 91.55)">
+                            <rect height="25" rx="4" width="88" />
+                            <text text-anchor="middle" x="44" y="17">QS 25 · 64.3</text>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="chart-caption">
+            <span class="legend">
+              <i></i>AGU </span>
+                <span>Illustrative trends · not benchmark results</span>
+            </div>
+            <div class="metric-tabs" role="tablist">
+                <button aria-selected="true" class="active" role="tab" type="button">Encoding Time</button>
+                <button aria-selected="false" role="tab" type="button">Peak RAM</button>
+                <button aria-selected="false" role="tab" type="button">File Size</button>
+                <button aria-selected="false" role="tab" type="button">PSNR</button>
+                <button aria-selected="false" role="tab" type="button">SSIM</button>
+                <button aria-selected="false" role="tab" type="button">MSE</button>
+                <button aria-selected="false" role="tab" type="button">PSNR-HVS</button>
+                <button aria-selected="false" role="tab" type="button">PSNR-HVS-M</button>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
